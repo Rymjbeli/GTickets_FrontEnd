@@ -1,0 +1,30 @@
+<div class="form-container">
+  <h2 class="form-title"> Add a new ticket </h2>
+  <form #addForm="ngForm" (ngSubmit)="onAddTicket(addForm)">
+
+    <mat-form-field class="form-field">
+      <mat-label>Title</mat-label>
+      <input matInput name="title" ngModel required>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Priority</mat-label>
+      <mat-select name="priority" required ngModel >
+        <mat-option value="Low">Low</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="High">High</mat-option>
+        <mat-option value="Urgent">Urgent</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Description</mat-label>
+      <textarea matInput name="content" ngModel required></textarea>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button [disabled]="addForm.pristine" mat-raised-button color="warn" (click)="addForm.resetForm()">Reset</button>
+      <button id="add-ticket-form" [disabled]="addForm.invalid" mat-raised-button color="primary">Add</button>
+    </div>
+  </form>
+</div>

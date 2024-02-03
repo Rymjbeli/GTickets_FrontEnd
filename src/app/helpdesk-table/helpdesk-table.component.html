@@ -1,0 +1,99 @@
+<!--<div *ngFor="let ticket of Tickets" >-->
+<!--  <div> {{ticket.titre}}</div>-->
+<!--</div>-->
+<mat-card class="example-container mat-elevation-z8 cadre ">
+
+  <div class="d-flex justify-content-between align-items-center">
+    <!-- Search form -->
+    <form class="search-form">
+      <mat-form-field class="search-full-width">
+        <input
+          matInput
+          (input)="applyFilter($event)"
+          placeholder="Search..."
+        />
+      </mat-form-field>
+    </form>
+    <!-- Bouton d'ajout -->
+    <button  *ngIf="!admin" (click)="openDialog()" class="btn btn-outline-secondary btn-group-sm ">
+      Create
+    </button>
+  </div>
+
+  <!-- tableau -->
+
+  <table matSort mat-table [dataSource]="dataSource" class="striped-table">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef> Id</th>
+      <td mat-cell *matCellDef="let element" class="ellipsis"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Statut Column -->
+    <ng-container matColumnDef="status">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef> Status</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="statut statut-{{element.status.replace(' ','-' ) | lowercase }}">
+          {{element.status}}
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Priorite Column -->
+    <ng-container matColumnDef="priority">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef> Priority</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="priorite priorite-{{element.priority | lowercase }}">
+          {{element.priority}}
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Titre Column -->
+    <ng-container matColumnDef="title">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef> Title</th>
+      <td mat-cell *matCellDef="let element" class="ellipsis"> {{element.title}} </td>
+    </ng-container>
+
+    <!-- Client Column -->
+    <ng-container *ngIf="admin" matColumnDef="user">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef> User</th>
+      <td mat-cell *matCellDef="let element" class="ellipsis">
+        {{element?.user.email}}
+      </td>
+    </ng-container>
+
+<!--     Debut Column-->
+    <ng-container matColumnDef="date">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef> Created At</th>
+      <td mat-cell *matCellDef="let element" class="ellipsis">
+        {{element?.createdAt | date : 'd MMMM yyyy - HH:mm' }}
+      </td>
+    </ng-container>
+
+<!--     Modif Column-->
+    <ng-container matColumnDef="modif">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef> Updated At</th>
+      <td mat-cell *matCellDef="let element" class="ellipsis">
+        {{element?.updatedAt | date: 'd MMMM yyyy - HH:mm' }}
+      </td>
+    </ng-container>
+
+    <!-- Action(show) Column -->
+    <ng-container matColumnDef="action">
+      <th  mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="moreInfo(element.id)" mat-icon-button>
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row class="headline" *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Pagination -->
+  <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons ></mat-paginator>
+
+</mat-card>

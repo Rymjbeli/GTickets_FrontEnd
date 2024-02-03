@@ -1,0 +1,82 @@
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="wrap d-md-flex flex-md-row">
+          <div class="img" style="background-image: url(../../assets/Images/background.jpg); ">
+          </div>
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-4 underline">Sign In</h3>
+              </div>
+            </div>
+            <form  class="signin-form" #loginFormulaire="ngForm" (ngSubmit)="login(loginFormulaire)">
+              <div class="form-group mb-3">
+                <div class="input-info">
+                  <input
+                    type="text"
+                    placeholder="Enter your email"
+                    ngModel
+                    #email="ngModel"
+                    email
+                    name="email"
+                    id="email"
+                    required />
+                  <!-- email icon -->
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div *ngIf="email.invalid && (email.touched)" class="text-danger">
+                  Your email is not valid.
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <div class="input-info">
+                  <input
+                    ngModel
+                    #pwd="ngModel"
+                    type="{{ showPassword ? 'text' : 'password' }}"
+                    class="password"
+                    id="pwd"
+                    name="password"
+                    placeholder="Enter your password"
+                    minlength="6"
+                    required
+                  />
+                  <!-- lock icon -->
+                  <i class="fa-solid fa-lock"></i>
+                  <!-- eye icon -->
+                  <span id="show-password" (click)="showPassword = !showPassword">
+                    <i class="fa-solid " [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                  </span>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <button
+                  type="submit"
+                  class="form-control btn btn-primary rounded submit px-3"
+                  [disabled]="loginFormulaire.invalid"
+                >
+                  Sign In
+                </button>
+              </div>
+              <div class="form-group d-md-flex">
+                <div class="w-50 text-left">
+                  <label class="checkbox-wrap checkbox-primary mb-0">Remember Me
+                    <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" >
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="w-50 text-md-right forgot">
+                  <a routerLink="/reset-sending-email">Forgot Password</a>
+                </div>
+              </div>
+            </form>
+            <p class="text-center">Not a member? <a data-toggle="tab" routerLink="/sign-up">Sign Up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

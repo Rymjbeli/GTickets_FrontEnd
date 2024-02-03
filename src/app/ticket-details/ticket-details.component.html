@@ -1,0 +1,112 @@
+<app-navbar [inDetails]="false"></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mb-3"  style="width:103%">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-2 col-lg-1">
+              <div class="format" (click)="goBack()">
+                <button class="send" title="Return">
+                  <svg fill="none" style="transform: rotate(270deg)" viewBox="0 0 24 24" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#ffffff" d="M12 5L12 20"></path>
+                    <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#ffffff" d="M7 9L11.2929 4.70711C11.6262 4.37377 11.7929 4.20711 12 4.20711C12.2071 4.20711 12.3738 4.37377 12.7071 4.70711L17 9"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="col-10 col-lg-9">
+               <h1 class="fw-semibold">Ticket Details <span *ngIf="admin">#{{ticket?.id}}</span></h1>
+            </div>
+          </div>
+          <hr>
+          <div class="status-indicator">
+            <div class="dot" [style.background-color]="getDivColor(selectedStatus)" ></div>
+            <span class="status-text" [style.color]="getDivColor(selectedStatus)">{{ticket?.status}}</span>
+          </div>
+          <p class="card-title mb-4  "><span>Subject:</span> {{ticket?.title | capitalizeFirstWord}}</p>
+          <p class="card-text"><span class="fw-bolder">Content:</span> {{ticket?.content | capitalizeFirstWord}}.</p>
+          <p class="card-text mt-3"><span>Customer:</span> {{ticket?.user?.userName | titlecase}}</p>
+          <div class="dx-separator"></div>
+          <div class="row justify-content-around ticket-d row-gap-0">
+
+            <div class="col-6 col-sm-2 ticket-fields">
+              <ul class="list-unstyled ticket-details">
+                <li>
+            <span>
+              <span class="second-content fw-bold">Priority</span>
+              <span class="second-content light-text">{{ticket?.priority | capitalizeFirstWord}}</span>
+            </span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-sm-3 ticket-fields">
+              <ul class="list-unstyled ticket-details">
+                <li>
+            <span>
+              <span class="second-content fw-bold">Status</span>
+              <span class="second-content light-text" style="margin-top: 6px">
+                <select *ngIf="admin" [(ngModel)]="selectedStatus" (change)="updateTicketStatus()" class="custom-select">
+                  <option
+                    *ngFor="let status of ticketStatusOptions; let i = index"
+                    [value]="status">
+                    {{ status }}
+                  </option>
+                </select>
+                <span *ngIf="!admin">{{ticket?.status}}</span>
+              </span>
+            </span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-sm-3 ticket-fields">
+              <ul class="list-unstyled ticket-details">
+                <li>
+            <span>
+              <span class="second-content fw-bold">Created At</span>
+              <span class="second-content light-text" style="font-size: 15.6px">{{ticket?.createdAt| date: 'd MMMM yyyy - HH:mm'}}</span>
+            </span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-sm-3 ticket-fields">
+                <ul class="list-unstyled ticket-details">
+                  <li>
+              <span>
+                <span class="second-content fw-bold">Updated At</span>
+                <span class="second-content light-text" style="font-size: 15.6px">{{ticket?.updatedAt| date: 'd MMMM yyyy - HH:mm'}}</span>
+              </span>
+                  </li>
+                </ul>
+            </div>
+          </div>
+          <div class="dx-separator"></div>
+          <br>
+          <div class="custom-scrollbar">
+            <div class="container chat">
+              <app-reply-item *ngFor="let reply of replies" [Reply]="reply" (replyDeleted)="eventListener($event)" ></app-reply-item>
+            </div>
+          </div>
+          <hr>
+          <form #replyForm="ngForm" (ngSubmit)="addReply(replyForm)">
+              <div class="box-container" [style.background-color]="closed ? '#ebebeb':'initial'" >
+                <textarea [disabled]="closed" id="reply" name="reply" rows="3" placeholder="Write a Reply" ngModel></textarea>
+                <div class="formatting">
+                  <button type="submit" class="send" title="Send">
+                    <svg fill="none" viewBox="0 0 24 24" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#ffffff" d="M12 5L12 20"></path>
+                      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#ffffff" d="M7 9L11.2929 4.70711C11.6262 4.37377 11.7929 4.20711 12 4.20711C12.2071 4.20711 12.3738 4.37377 12.7071 4.70711L17 9"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            <div *ngIf="!admin" class="text-center">
+              <button class="btn btn-primary" (click)="deleteTicket()">Delete This Ticket</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

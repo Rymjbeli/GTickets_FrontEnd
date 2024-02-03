@@ -1,0 +1,113 @@
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.cadre {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  overflow-x:auto ;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headline {
+  background-color: rgba(127, 173, 219, 0.32);
+  font-weight: bold;
+}
+
+.striped-table {
+  .mdc-data-table__row:nth-child(even) {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+
+  border-radius: 15px !important;
+  width: 100px;
+}
+
+.statut, .priorite {
+  padding: 5.5px;
+  border-radius: 15px;
+  height: 35px;
+  font-size: 14px;
+  max-width: 80px;
+  border: 1px solid currentColor;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+table {
+  table-layout: auto ;
+}
+
+.statut-closed {
+  color: rgb(196,77,86);
+  background-color: rgb(255, 230, 230);
+}
+
+.statut-in-progress {
+  color:rgb(227,163,42);
+  background-color: rgb(255, 243, 205);
+  min-width: 87px;
+
+}
+
+.statut-open {
+  color: rgb(108,145,206);
+  background-color: rgb(223, 235, 255);
+}
+
+.statut-resolved {
+  color: rgb(70,161,70);
+  background-color: rgb(230, 255, 230);
+}
+
+.statut-pending {
+  color : rgb(109, 88, 183);
+  background-color: rgb(230, 230, 255);
+}
+
+.priorite-high {
+  color: rgba(196, 77, 86, 0.82);
+  background-color: rgba(255, 230, 230, 0.82);
+}
+
+.priorite-medium {
+  color: rgba(227, 163, 42, 0.85);
+  background-color: rgba(255, 243, 205, 0.85);
+}
+
+.priorite-low {
+  color: rgba(108, 131, 206, 0.77);
+  background-color: rgba(223, 235, 255, 0.67);
+}
+
+.search-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 60%;
+}
+
+.search-full-width {
+  width: 80%;
+  height: 65px;
+  margin: 10px;
+}

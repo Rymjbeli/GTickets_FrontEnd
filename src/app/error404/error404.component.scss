@@ -1,0 +1,89 @@
+#notfound {
+  position: relative;
+  height: 100vh;
+  background-color: rgba(218, 218, 218, 0.41)
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound {
+  max-width: 410px;
+  width: 100%;
+  text-align: center;
+}
+
+.notfound .notfound-404 {
+  height: 280px;
+
+}
+
+.notfound .notfound-404 h1 {
+  font-family: 'Montserrat', sans-serif ;
+  font-size: 230px ;
+  height: 60%;
+  padding-top: 65px;
+  margin: 0;
+  font-weight: 900;
+  position: absolute ;
+  z-index: 1;
+  left: 50% ;
+  -webkit-transform: translateX(-50%) ;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%) ;
+  background: url("../../assets/Images/b-g.jpeg") no-repeat center;
+  -webkit-background-clip: text ;
+  -webkit-text-fill-color: transparent;
+  background-size: cover ;
+}
+
+
+.notfound h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #010154;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.notfound p {
+  font-family: 'Montserrat', sans-serif;
+  color: #455786;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.notfound a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #1f78a8;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 40px;
+  color: #fff;
+  font-weight: 700;
+  -webkit-box-shadow: 0 4px 15px -5px rgb(15, 19, 30);
+  box-shadow: 0 4px 15px -5px rgb(15, 19, 30);
+}
+
+
+@media only screen and (max-width: 767px) {
+  .notfound .notfound-404 {
+    height: 142px;
+    margin-bottom: 20px ;
+
+  }
+  .notfound .notfound-404 h1 {
+    font-size: 112px;
+  }
+}

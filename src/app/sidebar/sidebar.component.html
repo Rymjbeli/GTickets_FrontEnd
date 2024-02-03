@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+<mat-drawer-container autosize style="min-height: 788px;">
+  <mat-drawer #drawer mode="side" opened class="sidebar" position="start">
+    <mat-nav-list style="height: 50px">
+      <mat-list-item [class.active]="selectedIndex === 0" (click)="shownewTickets('All',priority)">
+        <mat-icon  style="padding-top: 4px">view_headline</mat-icon>
+        <span >  All</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="height: 50px">
+      <mat-list-item [class.active]="selectedIndex === 1" (click)="shownewTickets('Open',priority)">
+        <mat-icon  style="padding-top: 2.5px">folder_open</mat-icon>
+        <span >  Open</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="height: 50px">
+      <mat-list-item [class.active]="selectedIndex === 2" (click)="shownewTickets('Pending',priority)">
+        <mat-icon  style="padding-top: 2.1px">pending</mat-icon>
+        <span >  Pending</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="height: 50px">
+      <mat-list-item [class.active]="selectedIndex === 3" (click)="shownewTickets('In progress',priority)">
+        <mat-icon  style="padding-top: 2.1px">access_time</mat-icon>
+        <span >  In progress</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="height: 50px">
+      <mat-list-item [class.active]="selectedIndex === 4" (click)="shownewTickets('Closed',priority)">
+        <mat-icon  style="padding-top: 2.5px">delete</mat-icon>
+        <span >  Closed</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-list-item [class.active]="selectedIndex === 5" (click)="shownewTickets('Resolved',priority)">
+        <mat-icon  style="padding-top: 2.5px">check</mat-icon>
+        <span >  Resolved</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <hr
+      style="border: 1.5px solid midnightblue; margin-right: 7px; margin-left: 7px; margin-top: 10px; margin-bottom: 10px">
+    <mat-nav-list>
+      <mat-list-item [class.active]="selectedPriority === 0" (click)="shownewTickets(status,'Low')">
+        <mat-icon  style="padding-top: 2.5px">low_priority</mat-icon>
+        <span >  Low</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-list-item [class.active]="selectedPriority === 1" (click)="shownewTickets(status,'Medium')">
+        <mat-icon  style="padding-top: 2.5px">event_note</mat-icon>
+        <span >  Medium</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-list-item [class.active]="selectedPriority === 2" (click)="shownewTickets(status,'High')">
+        <mat-icon  style="padding-top: 2.5px">warning</mat-icon>
+        <span >  High</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-list-item [class.active]="selectedPriority === 3" (click)="shownewTickets(status,'Urgent')">
+        <mat-icon style="padding-top: 2.5px">priority_high</mat-icon>
+        <span>  Urgent</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <hr style="border: 1.5px solid midnightblue; margin-right: 7px; margin-left: 7px; margin-top: 10px; margin-bottom: 10px">
+    <mat-nav-list>
+      <mat-list-item [class.active]="selectedPriority === 4" (click)="shownewTickets('All','')">
+        <mat-icon style="padding-top: 4px">clear_all</mat-icon>
+        <span> Reset </span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div>
+      <app-helpdesk-table [status]="status" [priority]="priority"></app-helpdesk-table>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

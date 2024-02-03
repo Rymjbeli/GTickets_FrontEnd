@@ -1,0 +1,246 @@
+/* ticket-details.component.css */
+$primary: #3b70c8;
+.card {
+  border: none;
+  margin-top: 20px;
+  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.58);
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 25px
+}
+.card-title {
+  margin-top: 7px;
+  font-size: 1.30rem ;
+}
+
+.card-title span {
+  font-weight: 600;
+}
+
+.card-text {
+  margin-bottom: 5px;
+  font-size: 1rem;
+
+}
+
+.card-text span {
+  font-weight: 600;
+}
+
+
+.ticket-d {
+  background-color: #f8f8f8;
+}
+.ticket-fields{
+  height: 87px;
+}
+
+.second-content {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15.5px;
+}
+
+.second-content.light-text {
+  color: #565656;
+}
+
+.dx-separator {
+  display: block;
+  border-bottom: 1px solid #ececec;
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+//textarea {
+//  padding: 10px;
+//  max-width: 100%;
+//  line-height: 1.5;
+//  border-radius: 5px;
+//  border: 1px solid #ccc;
+//  box-shadow: 1px 1px 1px rgba(153, 153, 153, 0.9);
+//  width: 100%;
+//}
+//
+//textarea:focus {
+//  outline: none;
+//  border-color: $primary;
+//  box-shadow: 1px 1px 1px rgba(59, 112, 200, 0.9);
+//}
+
+.custom-scrollbar {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 111, 198, 0.7);
+  border-radius: 100px;
+}
+
+.custom-scrollbar {
+  overflow: auto;
+}
+
+.select-option-center {
+  //text-align: center;
+}
+
+.custom-select {
+  background-color: #f6f6f6;
+  color: #565656;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 16px !important;
+  text-align: center;
+}
+
+.custom-select:hover {
+  border: 1px solid #ccc;
+}
+
+.custom-select:focus {
+  outline: none;
+  border: 1px solid #f6f6f6;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+option {
+  color: #565656;
+  font-size: 16px !important;
+}
+
+.status-indicator {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.status-text {
+  font-size: 18px !important;
+font-weight: 550
+}
+
+
+.box-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 8px 8px 23px 23px;
+  padding: 4px;
+  box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.9);
+  border: 1.5px solid #ccc;
+}
+
+.box-container textarea {
+  width: 98%;
+  height: 60px;
+  resize: none;
+  border: 0;
+  border-radius: 6px;
+  padding-left: 12px;
+  font-size: 16px !important;
+  outline: none;
+  caret-color: #0a84ff;
+  line-height: 1.5;
+}
+.format .send{
+  margin-left: 11px;
+  margin-top: -1px;
+}
+ .formatting {
+  display: flex;
+  justify-content: flex-end; /* Move the SVG to the right */
+  align-items: center;
+  padding: 0 3px 3px 0;
+}
+ .formatting button, .format button {
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #3b70c8;
+  outline: none;
+  background: #3b70c8;
+  margin: 0 0 0 auto;
+}
+ .formatting button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ .formatting .send:hover, .format .send:hover {
+  border: 2px solid #3b70c8;
+  background: transparent;
+  box-shadow: rgba(255, 255, 255, .2) 0 4px 15px inset, rgba(0, 0, 0, .1) 0 4px 5px, rgba(0, 0, 0, .1) 0 10px 15px;
+  transform: scale(1.04);
+}
+button.send:hover svg path {
+  stroke: #3b70c8;
+}
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+
+//button
+.btn {
+  cursor: pointer;
+  box-shadow: none !important;
+  font-size: 15px !important;
+  margin-top: 10px;
+  padding: 10px 20px ;
+  width: 30% ;
+
+  &.btn-primary {
+    background: $primary !important;
+    border: 1px solid $primary !important;
+    border-radius: 15px !important;
+    color: white !important;
+    font-size: 16px !important;
+
+    &:hover {
+      border: unset !important;
+      background: #DB3545FF !important;
+      color: white !important;
+      transform: scale(1.03) !important;
+    }
+  }
+}
+
+.chat{
+  margin-top: 10px;
+}

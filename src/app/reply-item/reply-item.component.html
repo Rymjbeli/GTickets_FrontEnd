@@ -1,0 +1,16 @@
+<div class="row media mb-4" >
+  <div class="col-2 col-lg-1 col-sm-2 customer-img" >
+    <img *ngIf="Reply.user.path" class="mr-3" [src]="userImagePath" alt="User Avatar">
+  </div>
+  <div class="col media-body">
+    <div class="d-flex justify-content-between align-items-start">
+      <div>
+        <h6 class="mt-0 fs-6">{{Reply.user.userName | titlecase}}</h6>
+        <small class="text-muted">Posted on {{Reply.createdAt | date: 'd MMMM yyyy - HH:mm'}}</small>
+      </div>
+      <button *ngIf="hasPermission" class="btn" (click)="deleteReply()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+    <p class="mb-0 text-content fs-6">{{Reply.content | capitalizeFirstWord}}.</p>
+  </div>

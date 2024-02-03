@@ -1,0 +1,111 @@
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="wrap d-md-flex flex-md-row">
+          <div class="img" style="background-image: url(../../assets/Images/background.jpg); ">
+          </div>
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-4 underline">Sign Up</h3>
+              </div>
+            </div>
+            <form class="signin-form" #signupFormulaire="ngForm">
+              <div class="form-group mb-3 d-flex">
+                <div class="input-info mr-3">
+                  <input
+                    type="text"
+                    placeholder="Enter your userName"
+                    ngModel
+                    #userName="ngModel"
+                    name="userName"
+                    id="userName"
+                    required/>
+                  <!-- user icon -->
+                  <i class="fa-solid fa-user"></i>
+                </div>
+                <div *ngIf="userName.invalid && (userName.touched)" class="text-danger">
+                  Your userName is required.
+                </div>
+              </div>
+              <!-- photo field -->
+              <div class="form-group mb-3">
+                <div>
+                  <label for="path" class="custom-label">
+                    <i
+                      class="fa-solid fa-camera custom-icon"></i> {{ selectedFile ? selectedFile.name : 'Upload an Image' }}
+                  </label>
+                  <input
+                    class="custom-input"
+                    type="file"
+                    placeholder="Enter your photo"
+                    ngModel
+                    #file="ngModel"
+                    name="file"
+                    id="path"
+                    (change)="onFileSelected($event)"
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <div class="input-info">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    ngModel
+                    #email="ngModel"
+                    email
+                    name="email"
+                    id="email"
+                    required/>
+                  <!-- email icon -->
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div *ngIf="email.invalid && (email.touched)" class="text-danger">
+                  Your email is not valid.
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <div class="input-info">
+                  <input
+                    ngModel
+                    #pwd="ngModel"
+                    type="{{ showPassword ? 'text' : 'password' }}"
+                    class="password"
+                    id="pwd"
+                    name="password"
+                    placeholder="Enter your password"
+                    minlength="6"
+                    required
+                  />
+                  <!-- lock icon -->
+                  <i class="fa-solid fa-lock"></i>
+                  <!-- eye icon -->
+                  <span id="show-password" (click)="showPassword = !showPassword">
+                    <i class="fa-solid " [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                  </span>
+                </div>
+                <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="text-danger">
+                  Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character
+                </div>
+              </div>
+              <div class="form-group">
+                <button
+                  type="submit"
+                  class="form-control btn btn-primary rounded submit px-3"
+                  [disabled]="signupFormulaire.invalid"
+                  (click)="signup(signupFormulaire)"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </form>
+            <br>
+            <p class="text-center">Already a member? <a routerLink="/sign-in">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

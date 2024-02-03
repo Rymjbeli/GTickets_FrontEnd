@@ -1,0 +1,21 @@
+<mat-toolbar class="navbar mat-elevation-z8 ">
+    <button *ngIf="inDetails" (click)="toggleDrawer()" mat-icon-button style="margin-left: -10px;margin-top: -5px;">
+      <mat-icon>menu</mat-icon>
+    </button>
+  <span routerLink="/tickets/all" style="padding-top: 10px; cursor: pointer"><h2><strong>G_Ticket</strong></h2></span>
+  <span class="example-spacer"></span>
+  <span>
+      <img *ngIf="!!user?.path"
+           [src]="userImagePath"
+           alt="User Avatar"
+           class="rounded-circle"
+
+      />
+  </span>
+  <span>
+    <h3 class="d-none d-sm-block m-2">{{user?.userName | titlecase}}</h3>
+  </span>
+  <button (click)="logout()" mat-icon-button>
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
